@@ -6,7 +6,7 @@
 /*   By: hhuhtane <hhuhtane@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/23 13:04:31 by hhuhtane          #+#    #+#             */
-/*   Updated: 2021/04/24 11:02:13 by hhuhtane         ###   ########.fr       */
+/*   Updated: 2021/04/24 13:11:51 by hhuhtane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,20 @@ int	simple_command(t_process *proc)
 	proc->pid = pid;
 	waitpid(pid, &status, 0); // check the status with those macros?
 	if (WIFEXITED(status))
+	{
+		proc->completed = 1;
 		proc->status = WEXITSTATUS(status);
+	}
 	else if (WIFSIGNALED(status))
+	{
+		proc->completed = 1;
 		proc->status = WTERMSIG(status) + 128;
+	}
 	else if (WIFSTOPPED(status)) // should this be before signaled?
+	{
+		proc->completed = 1;
 		proc->status = WIFSTOPPED(status);
+	}
 	else
 		proc->status = status;
 	return (proc->status);

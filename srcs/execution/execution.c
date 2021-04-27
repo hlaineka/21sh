@@ -6,7 +6,7 @@
 /*   By: hlaineka <hlaineka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 18:28:40 by hhuhtane          #+#    #+#             */
-/*   Updated: 2021/04/23 11:01:45 by hhuhtane         ###   ########.fr       */
+/*   Updated: 2021/04/24 13:27:58 by hhuhtane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,7 @@ void	execute_job(t_job *jobs, t_term *term)
 		return ;
 	}
 */
-	ft_printf_fd(4, "EXECUTE_JOBS\n");
+	ft_printf_fd(4, "EXECUTE_JOB, no pipes\n");
 //	signal(SIGCHLD, sig_handler_exec);
 	signal(SIGPIPE, SIG_IGN);
 //	start_new_jobs(jobs, rpipe);
