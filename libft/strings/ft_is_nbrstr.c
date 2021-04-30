@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_signal.h                                        :+:      :+:    :+:   */
+/*   ft_is_nbrstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlaineka <hlaineka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 11:12:09 by helvi             #+#    #+#             */
-/*   Updated: 2021/04/28 10:06:13 by hlaineka         ###   ########.fr       */
+/*   Created: 2021/04/28 17:49:31 by hlaineka          #+#    #+#             */
+/*   Updated: 2021/04/28 18:13:57 by hlaineka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SIGNAL_H
-# define FT_SIGNAL_H
+#include "libft.h"
 
-# include <signal.h>
-# include "includes.h"
+/*
+** Checks if the string given as an argument is only digits.
+*/
 
-void	start_signal(void);
-void	sig_handler_input(int signo);
-void	sig_handler_exec(int signo);
-void	signals_to_default(void);
-void	sig_child_handler(void);
+int	ft_is_nbrstr(char *str)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}

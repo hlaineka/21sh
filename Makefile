@@ -6,7 +6,7 @@
 #    By: hlaineka <hlaineka@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 12:00:35 by hlaineka          #+#    #+#              #
-#    Updated: 2021/04/23 14:43:38 by hhuhtane         ###   ########.fr        #
+#    Updated: 2021/04/29 14:24:09 by hlaineka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,14 +82,16 @@ _SRC_TOKENIZATION = lexer.c \
 					basic_tokens.c \
 					basic_token_functions.c \
 					basic_token_functions2.c \
+					basic_token_functions3.c \
 					operator_tokens.c \
+					operator_tokens_functions.c \
 					advanced_tokenization.c
 
 _SRC_AST_CREATION = ast_creation.c \
 					precedence.c \
 					shunting_yard.c \
 					ast_builder.c \
-					free_ast.c
+					ast_functions.c
 
 _SRC_SIGNAL =	signal.c \
 				signal_input.c \
@@ -117,7 +119,8 @@ _SRC_UNSETENV =	builtin_unsetenv.c
 
 _SRC_EXECUTION =	exec_tprocess.c \
 					execution.c \
-					simple_command.c
+					simple_command.c \
+					fork_and_chain_pipes.c
 
 
 SRC_MAIN = $(addprefix $(DIR_MAIN), $(_SRC_MAIN))
