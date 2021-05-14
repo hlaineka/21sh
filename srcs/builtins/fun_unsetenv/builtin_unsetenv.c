@@ -6,7 +6,7 @@
 /*   By: hhuhtane <hhuhtane@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:52:15 by hhuhtane          #+#    #+#             */
-/*   Updated: 2021/05/08 16:01:41 by hhuhtane         ###   ########.fr       */
+/*   Updated: 2021/05/14 12:11:59 by hhuhtane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	builtin_unsetenv(void *proc)
 	while (argv[i])
 	{
 		if (ft_unsetenv(argv[i], envp) == -1)
-			process->status = err_builtin(ERR_INVALID_INPUT, argv[0], argv[i]);
+			process->status = err_builtin(E_INVALID_INPUT, argv[0], argv[i]);
 		i++;
 	}
 	process->completed = 1;
