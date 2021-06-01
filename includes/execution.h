@@ -6,7 +6,7 @@
 /*   By: hlaineka <hlaineka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 11:35:38 by hlaineka          #+#    #+#             */
-/*   Updated: 2021/05/07 10:43:13 by hlaineka         ###   ########.fr       */
+/*   Updated: 2021/05/12 10:42:43 by hlaineka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ t_job		*init_job(t_term *term);
 t_process	*init_process(t_term *term);
 void		free_job(t_job *job_to_free);
 void		restore_fds(t_term *term);
+
+/*
+** execution/job_creation/job_functions2.c
+*/
+
+void		update_fds(t_term *term);
+void		get_right(t_node *current, t_term *term);
 
 /*
 ** execution/job_creation/pipe_functions.c

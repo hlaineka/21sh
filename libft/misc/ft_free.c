@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helvi <helvi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hlaineka <hlaineka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 17:00:59 by hlaineka          #+#    #+#             */
-/*   Updated: 2021/02/19 11:27:21 by helvi            ###   ########.fr       */
+/*   Updated: 2021/05/27 17:28:45 by hlaineka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@
 
 void	ft_free(void *variable)
 {
-	free(variable);
-	variable = NULL;
+	ft_memdel(&variable);
 }

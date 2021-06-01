@@ -6,7 +6,7 @@
 /*   By: hlaineka <hlaineka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 19:20:26 by hhuhtane          #+#    #+#             */
-/*   Updated: 2021/05/02 09:24:50 by hlaineka         ###   ########.fr       */
+/*   Updated: 2021/05/21 21:04:08 by hhuhtane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_cfmakeraw(struct termios *termios_p)
 	termios_p->c_iflag &= ~(IGNBRK | BRKINT | PARMRK | ISTRIP
 			| INLCR | IGNCR | ICRNL | IXON);
 	termios_p->c_oflag &= ~OPOST;
-	termios_p->c_lflag &= ~(ECHO | ECHONL | ICANON | IEXTEN);
+	termios_p->c_lflag &= ~(ECHO | ECHONL | ICANON | IEXTEN | ISIG);
 	termios_p->c_cflag &= ~(CSIZE | PARENB);
 	termios_p->c_cflag |= CS8;
 }

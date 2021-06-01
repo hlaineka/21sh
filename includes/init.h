@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal_to_default.c                                :+:      :+:    :+:   */
+/*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlaineka <hlaineka@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/23 14:38:09 by hhuhtane          #+#    #+#             */
-/*   Updated: 2021/05/27 11:18:23 by hhuhtane         ###   ########.fr       */
+/*   Created: 2021/05/17 11:37:52 by hlaineka          #+#    #+#             */
+/*   Updated: 2021/05/17 11:44:53 by hlaineka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes.h"
+#ifndef INIT_H
+# define INIT_H
 
-void	signals_to_default(void)
-{
-	int		i;
+# include "includes.h"
+# include "structs_21.h"
+# include "input.h"
 
-	i = 1;
-	while (i < 32)
-	{
-		signal(i, SIG_DFL);
-		i++;
-	}
-	signal(SIGTSTP, SIG_IGN);
-}
+void		disable_raw_mode_continue(t_term *term);
+void		disable_raw_mode(t_term *term);
+int			disable_rawmode(void);
+void		get_termios_modes(t_term *term);
+void		enable_raw_mode(t_term *term);
+void		initialize(t_input *input, t_term *term, char **envp, char **argv);
+void		init_input(t_input *input);
+
+#endif

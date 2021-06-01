@@ -6,7 +6,7 @@
 /*   By: hhuhtane <hhuhtane@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 17:34:41 by hhuhtane          #+#    #+#             */
-/*   Updated: 2021/05/07 12:20:19 by hhuhtane         ###   ########.fr       */
+/*   Updated: 2021/05/27 10:57:24 by hhuhtane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,30 @@ static void	do_esc_keys(char *rc, t_input *input, t_term *term)
 		alt_down_keypress(input, term);
 }
 
+static int	do_ctrl_c_key(t_input *input, t_term *term)
+{
+	int		col;
+	int		row;
+
+	col = input->prompt_col - 1;
+	row = input->prompt_row - 1;
+	tputs(tgoto(term->cm_string, col, row), 1, ft_putc);
+	ft_putstr_input(input->ls, input, term);
+	ft_putrstr_input(input->rrs, input, term);
+	input->ls[0] = '\0';
+	input->rrs[0] = '\0';
+	if (input->heredoc)
+	{
+		input->ls[0] = 4;
+		input->ls[1] = '\0';
+	}
+	if (!input->heredoc)
+		*input->quote = PROMPT_NORMAL;
+	ft_memdel((void **)input->ret_str);
+	term->last_return = 1;
+	return (-1);
+}
+
 static int	do_special_keys(char *rc, t_input *input, t_term *term)
 {
 	if (rc[0] == 25)
@@ -62,6 +86,8 @@ static int	do_special_keys(char *rc, t_input *input, t_term *term)
 		return (react_to_eof(input, term));
 	if (rc[0] == 13)
 		return (1);
+	if (rc[0] == 3)
+		return (do_ctrl_c_key(input, term));
 	return (0);
 }
 
